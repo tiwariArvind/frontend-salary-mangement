@@ -20,6 +20,18 @@ export default function EmployeeList() {
     }
   };
 
+  // 🗑️ DELETE
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this employee?")) return;
+
+    try {
+      await API.delete(`/employees/${id}`);
+      fetchEmployees();
+    } catch (err) {
+      console.error("Delete failed:", err);
+    }
+  };
+
   
 
   // ✏️ START EDIT
